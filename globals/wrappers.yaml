@@ -1,0 +1,6 @@
+- wrapper:
+    name: build-name-wrapper
+    wrappers:
+      - build-name:
+          name: "{build-name-param}"
+

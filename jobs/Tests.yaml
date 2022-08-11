@@ -1,0 +1,27 @@
+- job:
+    name: Tests
+    project-type: matrix
+    axes:
+      - axis:
+         type: user-defined
+         name: TARGET
+         values:
+          - linters
+          - py37
+          - py38
+
+
+    parameters:
+      - string:
+          name: BRANCH
+
+
+    scm:
+      - git:
+          url: https://github.com/ochirkov/cicd-sessions-repo.git
+          branches:
+            - $BRANCH
+
+
+    builders:
+      - shell: tox -e $TARGET

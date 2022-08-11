@@ -1,0 +1,9 @@
+- builder:
+    name: build-steps-macro
+    builders:
+      - shell: "echo Build docs"
+      - shell: "tox -e docs"
+      - shell: "echo Build linters"
+      - shell: "tox -e linter"
+      - shell: "echo Build coverage"
+      - shell: "tox -e cover"

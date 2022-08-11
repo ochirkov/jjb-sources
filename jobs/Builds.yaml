@@ -1,0 +1,29 @@
+- job:
+    name: Build
+    project-type: matrix
+    axes:
+      - axis:
+         type: user-defined
+         name: TARGET
+         values:
+          - docs
+          - cover
+
+
+    parameters:
+      - string:
+          name: BRANCH
+
+
+    scm:
+      - git:
+          url: https://github.com/ochirkov/cicd-sessions-repo.git
+          branches:
+            - $BRANCH
+
+
+    builders:
+      - shell:
+          !include-raw: ../scripts/Build/build.sh
+
+
