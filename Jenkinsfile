@@ -12,8 +12,22 @@ pipeline {
         }
 
         stage('Test') {
+           when {
+               not {
+                   branch 'master'
+               }
+           }
             steps {
                 sh 'jenkins-jobs test -r jobs/'
+            }
+        }
+
+        stage('Update') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'jenkins-jobs --conf jjb_config.ini update -r jobs/'
             }
         }
     }
