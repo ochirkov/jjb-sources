@@ -7,7 +7,7 @@ pipeline {
         stage("Checkout") {
             steps {
                 git url: 'https://github.com/ochirkov/jjb-sources.git'
-                    branch: main
+                    branch: 'main'
             }
         }
 
